@@ -24,6 +24,8 @@ namespace CyberCodeFunction
 
         private void btnExec_Click(object sender, EventArgs e)
         {
+            Clear();
+
             if (txtItem1.Text.Length > 0) Exec(txtItem1.Text);
             if (txtItem2.Text.Length > 0) Exec(txtItem2.Text);
             if (txtItem3.Text.Length > 0) Exec(txtItem3.Text);
@@ -76,6 +78,13 @@ namespace CyberCodeFunction
                 }
                 Exec1("lbl" + sItem);
             }
+        }
+
+        void Clear()
+        {
+            foreach(var l in tableLayoutPanel2.Controls.OfType<Label>()
+                .Where(c => c.Name.StartsWith("lbl")))
+                l.Text= "0";
         }
 
         void Exec1(string sObj)
